@@ -1,25 +1,61 @@
-body {
-    font-family: 'Arial', sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background: transparent;  /* Ensures no background color interferes with the video */
     color: #333;
+    overflow: hidden;  /* Prevents scrolling caused by the full-screen video */
 }
-header, footer {
-    background: #222;
+
+.site-content {
+    flex: 1;
+    overflow: auto;  /* Allows scrolling within the content area if needed */
+    padding-top: 70px;  /* Gives space under the header */
+    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white for content visibility */
+}
+
+header {
+    width: 100%;
+    z-index: 10;  /* Ensures the header is above most elements but below modal/dialog elements if any */
+    background: rgba(34, 34, 34, 0.8);  /* Semi-transparent background for the header */
     color: white;
     padding: 1em 0;
     text-align: center;
 }
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background: rgba(34, 34, 34, 0.8);  /* Semi-transparent background for the footer */
+    color: white;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
+    text-align: center;
 }
+
 nav ul li {
     display: inline;
     margin-right: 10px;
 }
+
 section {
+    text-align: center;
     padding: 20px;
     margin-top: 20px;
+}
+
+#myvideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Viewport width to cover the entire viewport horizontally */
+    height: 100vh;  /* Viewport height to cover the entire viewport vertically */
+    z-index: -1;  /* Behind all other content */
+    object-fit: cover;  /* Ensures the video covers the element area fully without distortion */
 }
